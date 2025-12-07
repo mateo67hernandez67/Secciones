@@ -65,9 +65,30 @@
                 <div class="relative h-64 overflow-hidden bg-gray-100">
                     <img src="{{ asset('storage/FotoProductos/' . $producto->foto) }}" alt="Producto" 
                         class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500">
-                    
-                    @if($producto->cantidad < 5)
-                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">¡Pocas unidades!</span>
+                    @if($producto->stock)
+                        @php
+                            $status = $producto->stock->stock_status;
+                            $quantity = $producto->stock->quantity;
+                        @endphp
+                        
+                        @if($status == 'Disponible')
+                            <span class="absolute top-2 left-2 bg-green-500 text-white text-xs px-2 py-1 rounded">
+                                <i class="fa-solid fa-check-circle"></i> 
+                                {{ $status }} ({{ $quantity }})
+                            </span>
+                        @elseif($status == 'Bajo Stock')
+                            <span class="absolute top-2 left-2 bg-yellow-500 text-white text-xs px-2 py-1 rounded">
+                                <i class="fa-solid fa-exclamation-triangle"></i>
+                                {{ $status }} ({{ $quantity }})
+                            </span>
+                        @else
+                            <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
+                                <i class="fa-solid fa-times-circle"></i>
+                                {{ $status }}
+                            </span>
+                        @endif
+                    @else
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">No disponible</span>
                     @endif
                 </div>
 

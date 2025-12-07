@@ -48,12 +48,31 @@
                     <div class="border-t border-b border-gray-100 py-4 mb-8">
                         <div class="flex items-center gap-4">
                             <span class="text-gray-500">Disponibilidad:</span>
-                            @if($producto->cantidad > 0)
-                                <span class="text-green-600 font-medium flex items-center gap-1">
-                                    <i class="fa-solid fa-check-circle"></i> En Stock ({{ $producto->cantidad }})
-                                </span>
+                            
+                            @if($producto->stock)
+                                @php
+                                    $status = $producto->stock->stock_status;
+                                    $quantity = $producto->stock->quantity;
+                                @endphp
+                                
+                                @if($status == 'Disponible')
+                                    <span class="text-green-600 font-medium flex items-center gap-1">
+                                        <i class="fa-solid fa-check-circle"></i> 
+                                        {{ $status }} ({{ $quantity }})
+                                    </span>
+                                @elseif($status == 'Bajo Stock')
+                                    <span class="text-yellow-600 font-medium flex items-center gap-1">
+                                        <i class="fa-solid fa-exclamation-triangle"></i>
+                                        {{ $status }} ({{ $quantity }})
+                                    </span>
+                                @else
+                                    <span class="text-red-500 font-medium flex items-center gap-1">
+                                        <i class="fa-solid fa-times-circle"></i>
+                                        {{ $status }}
+                                    </span>
+                                @endif
                             @else
-                                <span class="text-red-500 font-medium">Agotado</span>
+                                <span class="text-gray-500 font-medium">No disponible</span>
                             @endif
                         </div>
                     </div>
