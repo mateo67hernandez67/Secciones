@@ -16,7 +16,7 @@
 
     <nav class="bg-white shadow-sm">
         <div class="container mx-auto px-4 py-4">
-            <a href="{{ route('productos.index') }}" class="text-gray-500 hover:text-brand flex items-center gap-2">
+            <a href="javascript:history.back()" class="text-gray-500 hover:text-brand flex items-center gap-2">
                 <i class="fa-solid fa-arrow-left"></i> Volver a la tienda
             </a>
         </div>
@@ -27,7 +27,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2">
                 
                 <div class="bg-pink-50 h-96 md:h-full overflow-hidden">
-                    <img src="{{ asset('storage/FotoProductos/' . $producto->foto) }}" 
+                    <img src="data:image/jpeg;base64,{{ $producto->foto }}" 
                         alt="{{ $producto->nombre }}" 
                         class="w-full h-full object-cover object-center">
                 </div>

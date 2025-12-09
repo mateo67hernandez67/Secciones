@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('nombre', 50);
             $table->string('descripcion', 200);
             $table->decimal('precio', 10, 2);
-            $table->string('foto');
+            $table->text('foto');
             $table->json('gallery_images')->nullable();
             $table->string('brand', 50)->nullable();
             $table->timestamps();

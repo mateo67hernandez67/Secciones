@@ -13,7 +13,7 @@ class ProductosSeeder extends Seeder
 
             [
                 'category_id' => 1,
-                'nombre' => 'Cojín de Lactancia Ergonómico',
+                'nombre' => 'Cojin',
                 'descripcion' => 'Cojín en forma de U para apoyar al bebé durante la lactancia.',
                 'precio' => 39.99,
                 'foto' => 'cojin_lactancia.jpg',

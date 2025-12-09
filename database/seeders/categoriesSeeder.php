@@ -12,36 +12,22 @@ class CategoriesSeeder extends Seeder
         DB::table('categories')->insert([
 
             [
-                'name' => 'Lactancia',
-                'description' => 'Productos relacionados con la lactancia materna y apoyo para la alimentación del bebé.',
+                'name' => 'Ropa',
+                'description' => 'Vestimenta para',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
 
             [
-                'name' => 'Maternidad',
-                'description' => 'Artículos esenciales para madres durante el embarazo, parto y postparto.',
+                'name' => 'Juguetes',
+                'description' => 'Juguetes para el desarrollo de nuestros bebes',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
 
             [
-                'name' => 'Ropa de Bebé',
-                'description' => 'Prendas y accesorios para recién nacidos y bebés de hasta 2 años.',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-
-            [
-                'name' => 'Movilidad',
-                'description' => 'Carritos, cochecitos, sillas y accesorios para transportar al bebé con seguridad.',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-
-            [
-                'name' => 'Tecnología para Bebés',
-                'description' => 'Monitores, cámaras, termómetros y dispositivos electrónicos enfocados en el cuidado infantil.',
+                'name' => 'Madres',
+                'description' => 'Todo para nuestras madres ',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

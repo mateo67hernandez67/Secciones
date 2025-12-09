@@ -43,8 +43,8 @@
             <div class="bg-white">
                 <div class="container mx-auto px-4 py-3 overflow-x-auto whitespace-nowrap">
                     <a href="{{ route('home') }}" class="inline-block px-4 py-1 text-gray-600 hover:text-brand text-sm font-medium">Home</a>
-                    <a href="?category=ropa" class="inline-block px-4 py-1 text-gray-600 hover:text-brand text-sm font-medium">Ropa</a>
-                    <a href="?category=juguetes" class="inline-block px-4 py-1 text-gray-600 hover:text-brand text-sm font-medium">Juguetes</a>
+                    <a href="?category=ropa" class="inline-block px-4 py-1 text-gray-600 hover:text-brand text-sm font-medium">Bebes</a>
+                    <a href="?category=juguetes" class="inline-block px-4 py-1 text-gray-600 hover:text-brand text-sm font-medium">Juguetes y Estimulacion</a>
                     <a href="?category=lactancia" class="inline-block px-4 py-1 text-gray-600 hover:text-brand text-sm font-medium">Madres</a>
                 </div>
             </div>
@@ -105,7 +105,7 @@
 
                 @forelse ($productos as $producto)
                 <div class="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition">
-                    <img src="{{ asset('storage/FotoProductos/'. $producto->foto) }}" class="w-full h-56 object-cover rounded-lg" alt="{{ $producto->nombre }}">
+                    <img src="data:image/jpeg;base64,{{ $producto->foto }}" class="w-full h-56 object-cover rounded-lg" alt="{{ $producto->nombre }}">
 
                     <h3 class="mt-4 text-lg font-semibold text-gray-700">
                         {{ $producto->nombre }}
