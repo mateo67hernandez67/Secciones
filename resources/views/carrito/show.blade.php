@@ -20,21 +20,34 @@
 <body class="bg-gray-50 font-sans">
 
     {{-- HEADER --}}
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="{{ route('home') }}" class="text-2xl font-bold text-brand flex items-center gap-2">
+    <nav class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between relative">
+
+            <!-- IZQUIERDA -->
+            <a href="javascript:history.back()" 
+            class="text-gray-500 hover:text-brand flex items-center gap-2 z-20">
+                <i class="fa-solid fa-arrow-left"></i> Volver a la tienda
+            </a>
+
+            <!-- LOGO CENTRADO -->
+            <a href="{{ route('home') }}" 
+            class="text-2xl font-bold text-brand flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
                 <i class="fa-solid fa-baby-carriage"></i> Little Wonders
             </a>
-        </div>
 
-        <div class="bg-white border-t">
-            <div class="container mx-auto px-4 py-3">
-                <a href="{{ route('home') }}" class="inline-block text-gray-600 hover:text-brand text-sm font-medium">
-                    <i class="fa-solid fa-arrow-left mr-1"></i> Seguir Comprando
-                </a>
-            </div>
+            <!-- DERECHA -->
+            <a href="{{ route('User') }}" 
+            class="text-gray-600 hover:text-brand transition flex items-center gap-2 z-20">
+                @auth
+                    <p>{{ Auth::user()->name }}</p>
+                @else
+                    <i class="fa-solid fa-user text-xl"></i>
+                @endauth
+            </a>
+
         </div>
-    </nav>
+</nav>
+
 
     {{-- CONTENIDO --}}
     <main class="container mx-auto px-4 py-10">

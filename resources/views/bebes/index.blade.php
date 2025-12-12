@@ -1,7 +1,6 @@
-<?php 
-    session_start();
-    $usuario = $_SESSION['username'] ?? false;
-?>
+@php
+    $user = Auth::user();
+@endphp
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -31,19 +30,19 @@
 
     <!-- NAVBAR -->
     <nav class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            
-            <!-- Logo -->
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+
+            <!-- IZQUIERDA: Logo -->
             <a href="{{ route('home') }}" class="text-2xl font-bold text-brand flex items-center gap-2">
                 <i class="fa-solid fa-baby-carriage"></i> Little Wonders
             </a>
-            
-            <!-- Buscador -->
+
+            <!-- CENTRO: Buscador -->
             <div class="hidden md:flex flex-1 mx-10">
                 <form action="{{ route('productos.index') }}" method="GET" class="w-full relative">
                     <input type="text" name="search" value="{{ request('search') }}" 
-                           placeholder="Buscar ropita, accesorios..." 
-                           class="w-full pl-4 pr-10 py-2 rounded-full border border-gray-200 focus:outline-none focus:border-pink-400 bg-gray-50">
+                        placeholder="Buscar ropita, accesorios..." 
+                        class="w-full pl-4 pr-10 py-2 rounded-full border border-gray-200 focus:outline-none focus:border-pink-400 bg-gray-50">
                     <button type="submit" class="absolute right-3 top-2.5 text-gray-400 hover:text-pink-500">
                         <i class="fa-solid fa-search"></i>
                     </button>
@@ -57,7 +56,7 @@
                     Home
                 </a>
 
-                <!-- BEBÉS (Hover con delay) -->
+                <!-- Bebés -->
                 <div 
                     x-data="{ open:false, timer:null }"
                     @mouseenter="clearTimeout(timer); open = true"
@@ -74,17 +73,9 @@
                         x-transition
                         class="absolute bg-white shadow-md rounded-lg mt-2 w-40 py-2 z-50"
                     >
-                        <a href="{{ route('bebes.index') }}#ropa-bebe" class="block px-4 py-2 hover:bg-gray-100">
-                            Ropa Bebé
-                        </a>
-
-                        <a href="{{ route('bebes.index') }}#alimentacion" class="block px-4 py-2 hover:bg-gray-100">
-                            Alimentación
-                        </a>
-
-                        <a href="{{ route('bebes.index') }}#higiene" class="block px-4 py-2 hover:bg-gray-100">
-                            Higiene
-                        </a>
+                        <a href="{{ route('bebes.index') }}#ropa-bebe" class="block px-4 py-2 hover:bg-gray-100">Ropa Bebé</a>
+                        <a href="{{ route('bebes.index') }}#alimentacion" class="block px-4 py-2 hover:bg-gray-100">Alimentación</a>
+                        <a href="{{ route('bebes.index') }}#higiene" class="block px-4 py-2 hover:bg-gray-100">Higiene</a>
                     </div>
                 </div>
 
@@ -99,31 +90,19 @@
                     class="text-gray-600 hover:text-brand text-sm font-medium">
                         Juguetes
                     </a>
-
                     <div 
                         x-show="open"
                         x-transition
                         class="absolute bg-white shadow-md rounded-lg mt-2 w-40 py-2 z-50"
                     >
-                        <a href="{{ route('juguetes.index') }}#estimulación" 
-                        class="block px-4 py-2 hover:bg-gray-100">
-                            Estimulación
-                        </a>
-
-                        <a href="{{ route('juguetes.index') }}#motricidad" 
-                        class="block px-4 py-2 hover:bg-gray-100">
-                            Motricidad
-                        </a>
-
-                        <a href="{{ route('juguetes.index') }}#entretenimiento" 
-                        class="block px-4 py-2 hover:bg-gray-100">
-                            Entretenimiento
-                        </a>
-                    </div>
+                        <a href="{{ route('juguetes.index') }}#estimulación" class="block px-4 py-2 hover:bg-gray-100">Estimulación</a>
+                        <a href="{{ route('juguetes.index') }}#motricidad" class="block px-4 py-2 hover:bg-gray-100">Motricidad</a>
+                        <a href="{{ route('juguetes.index') }}#entretenimiento" class="block px-4 py-2 hover:bg-gray-100">Entretenimiento</a>
                 </div>
+            </div>
 
-                <!-- Madres -->
-              <div 
+            <!-- Madres -->
+            <div 
                     x-data="{ open:false, timer:null }"
                     @mouseenter="clearTimeout(timer); open = true"
                     @mouseleave="timer = setTimeout(() => open = false, 400)"
@@ -133,33 +112,20 @@
                     class="text-gray-600 hover:text-brand text-sm font-medium">
                         Madres
                     </a>
-
                     <div 
                         x-show="open"
                         x-transition
                         class="absolute bg-white shadow-md rounded-lg mt-2 w-40 py-2 z-50"
                     >
-                        <a href="{{ route('madres.index') }}#confort" 
-                        class="block px-4 py-2 hover:bg-gray-100">
-                            Confort
-                        </a>
-
-                        <a href="{{ route('madres.index') }}#salud" 
-                        class="block px-4 py-2 hover:bg-gray-100">
-                            Salud
-                        </a>
-
-                        <a href="{{ route('madres.index') }}#vestimenta" 
-                        class="block px-4 py-2 hover:bg-gray-100">
-                            Vestimenta
-                        </a>
+                        <a href="{{ route('madres.index') }}#confort" class="block px-4 py-2 hover:bg-gray-100">Confort</a>
+                        <a href="{{ route('madres.index') }}#salud" class="block px-4 py-2 hover:bg-gray-100">Salud</a>
+                        <a href="{{ route('madres.index') }}#vestimenta" class="block px-4 py-2 hover:bg-gray-100">Vestimenta</a>
                     </div>
                 </div>
 
-                </div>
             </div>
 
-            <!-- ICONOS DERECHA -->
+            <!-- DERECHA: Iconos -->
             <div class="flex items-center gap-4">
 
                 <!-- Carrito -->
@@ -172,14 +138,15 @@
 
                 <!-- Usuario -->
                 <a href="{{ route('User') }}" class="text-gray-600 hover:text-brand transition">
-                    @if ($usuario)
-                        <p>{{ $_SESSION['username'] }}</p>
+                    @auth
+                        <p>{{ Auth::user()->name }}</p>
                     @else
                         <i class="fa-solid fa-user text-xl"></i>
-                    @endif
+                    @endauth
                 </a>
 
             </div>
+
         </div>
     </nav>
 

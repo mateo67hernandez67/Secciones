@@ -1,3 +1,7 @@
+@php
+    $user = Auth::user();
+@endphp
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,12 +19,24 @@
 <body class="bg-gray-50 font-sans">
 
     <nav class="bg-white shadow-sm">
-        <div class="container mx-auto px-4 py-4">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+
+            
             <a href="javascript:history.back()" class="text-gray-500 hover:text-brand flex items-center gap-2">
                 <i class="fa-solid fa-arrow-left"></i> Volver a la tienda
             </a>
+
+            <a href="{{ route('User') }}" class="text-gray-600 hover:text-brand transition flex items-center gap-2">
+                @auth
+                    <p>{{ Auth::user()->name }}</p>
+                @else
+                    <i class="fa-solid fa-user text-xl"></i>
+                @endauth
+            </a>
+
         </div>
     </nav>
+
 
     <main class="container mx-auto px-4 py-10">
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
@@ -111,7 +127,7 @@
                     <a href="{{ route('productos.show', $rel->id) }}" class="group block">
                         <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow hover:scale-105 transition">
                             <div class="h-32 bg-gray-100 rounded mb-3 overflow-hidden">
-                                <img src="https://placehold.co/300x300/fce7f3/db2777?text=..." class="w-full h-full object-cover">
+                                <img src="{{ asset('storage/ImagenesProductos/' . $rel->foto )}}" class="w-full h-full object-cover">
                             </div>
                             <h4 class="font-medium text-gray-800 truncate">{{ $rel->nombre }}</h4>
                             <p class="text-brand font-bold text-sm">${{ number_format($rel->precio, 0, ',', '.') }}</p>

@@ -36,7 +36,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         // 5️⃣ Redirigir
-        $_SESSION['username']=$request->email;
+        $_SESSION['username']=$request->name;
         return redirect()->route('home');
     }
 }

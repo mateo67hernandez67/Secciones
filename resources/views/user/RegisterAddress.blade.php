@@ -1,3 +1,7 @@
+@php
+    $user = Auth::user();
+@endphp
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -34,6 +38,16 @@
                     <i class="fa-solid fa-baby-carriage"></i> Little Wonders
                 </a>
             </div>
+
+            <a href="{{ route('User') }}" class="text-gray-600 hover:text-brand transition">
+                @auth
+                    <p>{{ Auth::user()->name }}</p>
+                @else
+                    <i class="fa-solid fa-user text-xl"></i>
+                @endauth
+            </a>
+
+
         </div>
     </nav>
 

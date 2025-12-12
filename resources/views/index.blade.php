@@ -1,7 +1,6 @@
-<?php 
-  session_start();
-  $usuario=$_SESSION['username'] ?? false;
-?>
+@php
+    $user = Auth::user();
+@endphp
 
 <!DOCTYPE html>
 <html lang="es">
@@ -168,11 +167,11 @@
 
                 <!-- Usuario -->
                 <a href="{{ route('User') }}" class="text-gray-600 hover:text-brand transition">
-                    @if ($usuario)
-                      <p>{{ $_SESSION['username'] }}</p>
+                    @auth
+                        <p>{{ Auth::user()->name }}</p>
                     @else
-                      <i class="fa-solid fa-user text-xl"></i>
-                    @endif
+                        <i class="fa-solid fa-user text-xl"></i>
+                    @endauth
                 </a>
             </div>
         </div>

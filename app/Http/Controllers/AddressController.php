@@ -35,7 +35,7 @@ class AddressController extends Controller
             'contact_phone' => 'required|string|max:50',
             'address' => 'required|string|max:255',
             'city' => 'required|string|max:100',
-            'department' => 'required|string|max:100', // Nota: Tu HTML usaba 'country'
+            'department' => 'required|string|max:100',
             'reference' => 'nullable|string|max:255',
         ]);
 
