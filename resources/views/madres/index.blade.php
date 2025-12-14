@@ -184,8 +184,8 @@
     <!-- HERO -->
     <section class="bg-white border-b py-12">
         <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl font-bold text-pink-600">Categorías Bebés</h1>
-            <p class="text-gray-600 mt-3 text-lg">Todo lo que tu bebé necesita, organizado por secciones</p>
+            <h1 class="text-4xl font-bold text-pink-600">Madres</h1>
+            <p class="text-gray-600 mt-3 text-lg">Todo lo que tú necesitas, organizado por secciones</p>
         </div>
     </section>
 
@@ -198,7 +198,7 @@
     <section id="confort" class="py-12 scroll-mt-24">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">Confort</h2>
 
-        @include('madres.secciones.confort')
+        @include('madres.secciones.confort', ['productos' => $confort])
     </section>
 
     <!-- ========================== -->
@@ -207,7 +207,7 @@
     <section id="salud" class="py-12 scroll-mt-24">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">Salud</h2>
 
-        @include('madres.secciones.salud')
+        @include('madres.secciones.salud', ['productos' => $salud])
     </section>
 
     <!-- ========================== -->
@@ -216,7 +216,7 @@
     <section id="vestimenta" class="py-12 scroll-mt-24">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">Vestimenta</h2>
 
-        @include('madres.secciones.vestimenta')
+        @include('madres.secciones.vestimenta', ['productos' => $vestimenta])
     </section>
 
 </main>

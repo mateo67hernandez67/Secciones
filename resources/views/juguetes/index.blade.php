@@ -183,7 +183,7 @@
     <!-- HERO -->
     <section class="bg-white border-b py-12">
         <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl font-bold text-pink-600">Categorías Bebés</h1>
+            <h1 class="text-4xl font-bold text-pink-600">Jugueteria</h1>
             <p class="text-gray-600 mt-3 text-lg">Todo lo que tu bebé necesita, organizado por secciones</p>
         </div>
     </section>
@@ -197,7 +197,7 @@
     <section id="estimulación" class="py-12 scroll-mt-24">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">Estimulación</h2>
 
-        @include('juguetes.secciones.estimulacion')
+        @include('juguetes.secciones.estimulacion', ['productos' => $estimulacion])
     </section>
 
     <!-- ========================== -->
@@ -206,7 +206,7 @@
     <section id="motricidad" class="py-12 scroll-mt-24">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">Motricidad</h2>
 
-        @include('juguetes.secciones.motricidad')
+        @include('juguetes.secciones.motricidad', ['productos' => $motricidad])
     </section>
 
     <!-- ========================== -->
@@ -215,7 +215,7 @@
     <section id="entretenimiento" class="py-12 scroll-mt-24">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">Entretenimiento</h2>
 
-        @include('juguetes.secciones.entretenimiento')
+        @include('juguetes.secciones.entretenimiento', ['productos' => $entretenimiento])
     </section>
 
 </main>

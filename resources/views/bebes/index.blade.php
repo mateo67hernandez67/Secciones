@@ -8,13 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bebés | Little Wonders</title>
 
-    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
@@ -28,16 +25,13 @@
 
 <body class="bg-gray-50 font-sans">
 
-    <!-- NAVBAR -->
     <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex items-center justify-between">
 
-            <!-- IZQUIERDA: Logo -->
             <a href="{{ route('home') }}" class="text-2xl font-bold text-brand flex items-center gap-2">
                 <i class="fa-solid fa-baby-carriage"></i> Little Wonders
             </a>
 
-            <!-- CENTRO: Buscador -->
             <div class="hidden md:flex flex-1 mx-10">
                 <form action="{{ route('productos.index') }}" method="GET" class="w-full relative">
                     <input type="text" name="search" value="{{ request('search') }}" 
@@ -49,14 +43,12 @@
                 </form>
             </div>
 
-            <!-- MENÚ SUPERIOR -->
             <div class="flex gap-6 items-center">
 
                 <a href="{{ route('home') }}" class="text-gray-600 hover:text-brand text-sm font-medium">
                     Home
                 </a>
 
-                <!-- Bebés -->
                 <div 
                     x-data="{ open:false, timer:null }"
                     @mouseenter="clearTimeout(timer); open = true"
@@ -79,7 +71,6 @@
                     </div>
                 </div>
 
-                <!-- Juguetes -->
                 <div 
                     x-data="{ open:false, timer:null }"
                     @mouseenter="clearTimeout(timer); open = true"
@@ -98,11 +89,10 @@
                         <a href="{{ route('juguetes.index') }}#estimulación" class="block px-4 py-2 hover:bg-gray-100">Estimulación</a>
                         <a href="{{ route('juguetes.index') }}#motricidad" class="block px-4 py-2 hover:bg-gray-100">Motricidad</a>
                         <a href="{{ route('juguetes.index') }}#entretenimiento" class="block px-4 py-2 hover:bg-gray-100">Entretenimiento</a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Madres -->
-            <div 
+                <div 
                     x-data="{ open:false, timer:null }"
                     @mouseenter="clearTimeout(timer); open = true"
                     @mouseleave="timer = setTimeout(() => open = false, 400)"
@@ -125,10 +115,8 @@
 
             </div>
 
-            <!-- DERECHA: Iconos -->
             <div class="flex items-center gap-4">
 
-                <!-- Carrito -->
                 <a href="{{ route('carrito.mostrar') }}" class="relative text-gray-600 hover:text-brand transition">
                     <i class="fa-solid fa-cart-shopping text-xl"></i>
                     <span class="absolute -top-2 -right-2 bg-pink-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
@@ -136,7 +124,6 @@
                     </span>
                 </a>
 
-                <!-- Usuario -->
                 <a href="{{ route('User') }}" class="text-gray-600 hover:text-brand transition">
                     @auth
                         <p>{{ Auth::user()->name }}</p>
@@ -150,42 +137,31 @@
         </div>
     </nav>
 
-    <!-- HERO -->
     <section class="bg-white border-b py-12">
         <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl font-bold text-pink-600">Categorías Bebés</h1>
+            <h1 class="text-4xl font-bold text-pink-600">Babys</h1>
             <p class="text-gray-600 mt-3 text-lg">Todo lo que tu bebé necesita, organizado por secciones</p>
         </div>
     </section>
 
-    <!-- CONTENIDO -->
     <main class="container mx-auto px-6 py-10">
 
-        <!-- ========================== -->
-        <!-- 🔹 ROPA BEBÉ -->
-        <!-- ========================== -->
         <section id="ropa-bebe" class="py-12 scroll-mt-24">
             <h2 class="text-3xl font-bold text-gray-800 mb-6">Ropa Bebé</h2>
 
-            @include('bebes.secciones.ropa-bebe')
+            @include('bebes.secciones.ropa-bebe', ['productos' => $ropaBebe])
         </section>
 
-        <!-- ========================== -->
-        <!-- 🔹 ALIMENTACIÓN -->
-        <!-- ========================== -->
         <section id="alimentacion" class="py-12 scroll-mt-24">
             <h2 class="text-3xl font-bold text-gray-800 mb-6">Alimentación</h2>
 
-            @include('bebes.secciones.alimentacion')
+            @include('bebes.secciones.alimentacion', ['productos' => $alimentacion])
         </section>
 
-        <!-- ========================== -->
-        <!-- 🔹 HIGIENE -->
-        <!-- ========================== -->
-        <section id="higiene" class="py-12 scroll-mt-24">
+       <section id="higiene" class="py-12 scroll-mt-24">
             <h2 class="text-3xl font-bold text-gray-800 mb-6">Higiene</h2>
 
-            @include('bebes.secciones.higiene')
+            @include('bebes.secciones.higiene', ['productos' => $higiene])
         </section>
 
     </main>

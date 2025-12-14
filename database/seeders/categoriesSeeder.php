@@ -12,7 +12,7 @@ class CategoriesSeeder extends Seeder
         DB::table('categories')->insert([
 
             [
-                'name' => 'Embarazo y Madres',
+                'name' => 'Madres',
                 'description' => 'Todo lo que necesitan nuestras madres',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -26,7 +26,7 @@ class CategoriesSeeder extends Seeder
             ],
 
             [
-                'name' => 'Juguetes y Estimulacion',
+                'name' => 'Juguetes',
                 'description' => 'Todo para el desarrollo de nuestros bebes ',
                 'created_at' => now(),
                 'updated_at' => now(),

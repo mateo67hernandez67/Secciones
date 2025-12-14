@@ -9,6 +9,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CheckoutController;
 use App\Models\Order;
+use App\Http\Controllers\BebesController;
+use App\Http\Controllers\JuguetesController;
+use App\Http\Controllers\MadresController;
 
 
     /*
@@ -34,6 +37,15 @@ use App\Models\Order;
 
 
     });
+
+
+        Route::get('/bebes', [BebesController::class, 'index'])
+            ->name('bebes.index');
+        Route::get('/juguetes', [JuguetesController::class, 'index'])
+            ->name('juguetes.index');
+        Route::get('/madres', [MadresController::class, 'index'])
+            ->name('madres.index');
+
 
 
     /*
